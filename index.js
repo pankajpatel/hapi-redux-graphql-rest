@@ -1,10 +1,20 @@
 'use strict';
 
 const Hapi = require('hapi');
+const { graphqlHapi, graphiqlHapi } = require('graphql-server-hapi');
+const { makeExecutableSchema } = require('graphql-tools')
 require('dotenv').load();
 
-const Package = require('../package.json');
+const Package = require('./package.json');
 const config = require('./config');
+
+const Schema = require('./schema/schema');
+const Resolvers = require('./resolvers/resolvers');
+
+const executableSchema = makeExecutableSchema({
+  typeDefs: Schema,
+  resolvers: Resolvers,
+});
 
 // Create a server with a host and port
 
@@ -20,12 +30,30 @@ const errorHandler = err => {
 
 
 // Register/Add the plugins/modules
-
 server.register([
-
+  {
+    register: graphqlHapi,
+    options: {
+      path: '/graphql',
+      graphqlOptions: {
+        schema: executableSchema,
+      },
+      route: {
+        cors: true
+      }
+    },
+  },{
+    register: graphiqlHapi,
+    options: {
+      path: '/query',
+      graphiqlOptions: {
+        endpointURL: '/graphql',
+      },
+    },
+  }
 ], errorHandler);
 
-// Add the route
+// Add the routes
 
 server.route([
   { // path:/all
@@ -57,7 +85,7 @@ server.route([
 
       return reply({paths, plugins});
     }
-  }, { // psth:/
+  }, {
     method: 'GET',
     path: '/',
     config: {
@@ -76,5 +104,7 @@ server.start((err) => {
   if (err) {
     throw err;
   }
-  console.log('Server running at:', server.info.uri);
+  server.connections.forEach(connection => {
+      console.log('Server started at: ' + connection.info.uri);
+  });
 });
