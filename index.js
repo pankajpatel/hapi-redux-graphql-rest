@@ -13,7 +13,7 @@ const Resolvers = require('./resolvers/hp-resolvers');
 
 const executableSchema = makeExecutableSchema({
   typeDefs: Schema,
-  resolvers: Resolvers,
+  resolvers: Resolvers
 });
 
 // Create a server with a host and port
