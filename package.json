@@ -1,0 +1,15 @@
+{
+  "name": "hp-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "hapi": "^16.1.0",
+    "joi": "^10.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
