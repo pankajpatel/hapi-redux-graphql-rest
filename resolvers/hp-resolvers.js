@@ -18,23 +18,7 @@ const resolveFunctions = {
       return authors.find(author => author.id == id );
     },
   },
-  Mutation: {
-    upvotePost(root, { postId }) {
-      const post = find(posts, { id: postId });
-      if (!post) {
-        throw new Error(`Couldn't find post with id ${postId}`);
-      }
-      post.votes += 1;
-      pubsub.publish('postUpvoted', post);
-      return post;
-    },
-  },
-  // Implement Later
-  // Subscription: {
-  //   postUpvoted(post) {
-  //     return post;
-  //   },
-  // },
+
   Author: {
     posts(author) {
       return posts.filter(post => post.authorId == author.id);

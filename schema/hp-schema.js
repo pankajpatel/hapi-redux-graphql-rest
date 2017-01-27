@@ -19,17 +19,9 @@ type Query {
   author(id: Int!): Author
 }
 
-# this schema allows the following mutation:
-type Mutation {
-  upvotePost (
-    postId: Int!
-  ): Post
-}
-
 # we need to tell the server which types represent the root query
 # and root mutation types. We call them RootQuery and RootMutation by convention.
 schema {
   query: Query
-  mutation: Mutation
 }
 `;

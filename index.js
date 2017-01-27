@@ -8,8 +8,8 @@ require('dotenv').load();
 const Package = require('./package.json');
 const config = require('./config');
 
-const Schema = require('./schema/schema');
-const Resolvers = require('./resolvers/resolvers');
+const Schema = require('./schema/hp-schema');
+const Resolvers = require('./resolvers/hp-resolvers');
 
 const executableSchema = makeExecutableSchema({
   typeDefs: Schema,
