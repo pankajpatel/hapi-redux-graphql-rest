@@ -1,8 +1,5 @@
-import { ADD_COUNT } from '../actions'
+import { ADD_COUNT } from '../actions/constants'
 
-export default function (state = 0, action) {
-  if (action.type === ADD_COUNT) {
-    return state + action.payload
-  }
+export default function (state = {}, action) {
   return state
 }

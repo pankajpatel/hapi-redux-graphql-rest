@@ -1,8 +1,11 @@
+@import './variables.scss';
+
 header,
 .header{
   display: block;
   margin-bottom: 10px;
-  background-color: #ccc;
+  background-color: $default;
+  color: $primary;
   .container{
     position: relative;
   }
@@ -20,11 +23,11 @@ header,
     li{
       display: inline-block;
       a{
-        color: #000;
+        color: $white;
         padding: 5px 8px;
         text-decoration: none;
         &.active{
-          color: #777;
+          color: $warning;
           border-bottom: 1px dotted green;
         }
       }

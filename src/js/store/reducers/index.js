@@ -1,7 +1,7 @@
-import count from './count'
+import view from './toggleView'
 import load from './load'
 
 export default {
-  count,
+  view,
   load
 };

@@ -15,7 +15,6 @@ export default class FormBlock extends React.Component {
       return <Button className="btn" {...this.props} />;
     } else if(this.props.type == 'radio') {
       return <Radio className="form-field" {...this.props} />;
-
     } else {
       return <Input className="form-field" {...this.props} />;
     }

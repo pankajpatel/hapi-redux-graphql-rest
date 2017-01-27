@@ -372,7 +372,8 @@ header,
 .header {
   display: block;
   margin-bottom: 10px;
-  background-color: #ccc; }
+  background-color: #1A202C;
+  color: #1F7872; }
   header .container,
   .header .container {
     position: relative; }
@@ -393,12 +394,12 @@ header,
       display: inline-block; }
       header ul li a,
       .header ul li a {
-        color: #000;
+        color: #fff;
         padding: 5px 8px;
         text-decoration: none; }
         header ul li a.active,
         .header ul li a.active {
-          color: #777;
+          color: #DEDBA7;
           border-bottom: 1px dotted green; }
 
 .list ul {

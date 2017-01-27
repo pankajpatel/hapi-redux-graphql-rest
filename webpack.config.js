@@ -24,6 +24,11 @@ module.exports = {
     root: '../node_modules',
     moduleTemplates: ['*-loader']
   },
+  resolve: {
+    alias: {
+      js: path.join(__dirname, config.ui.srcDir , 'js')
+    }
+  },
   module:{
     loaders: [
       {

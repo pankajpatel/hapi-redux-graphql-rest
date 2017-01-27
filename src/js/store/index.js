@@ -6,12 +6,13 @@ import reducers from './reducers'
 
 export default class Store {
   constructor(history, initialState = {}) {
-    const reducer = combineReducers({
-      count: reducers.count,
-      load: reducers.load,
-      apollo: ApolloClientSingleton.reducer(),
-      routing: routerReducer
-    })
+    const reducer = combineReducers(Object.assign({},
+      reducers,
+      {
+        apollo: ApolloClientSingleton.reducer(),
+        routing: routerReducer
+      })
+    )
 
     this.data = createStore(
       reducer,

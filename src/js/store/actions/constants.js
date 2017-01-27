@@ -1,2 +1,2 @@
-export const ADD_COUNT = 'ADD_COUNT'
+export const TOGGLE_VIEW = 'TOGGLE_VIEW'
 export const LOAD = 'LOAD'
