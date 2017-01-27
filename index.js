@@ -1,11 +1,11 @@
 'use strict';
 
 const Hapi = require('hapi');
+const Inert = require('inert');
 const { graphqlHapi, graphiqlHapi } = require('graphql-server-hapi');
 const { makeExecutableSchema } = require('graphql-tools')
 require('dotenv').load();
 
-const Package = require('./package.json');
 const config = require('./config');
 
 const Schema = require('./schema/hp-schema');
@@ -50,8 +50,10 @@ server.register([
         endpointURL: '/graphql',
       },
     },
-  }
+  },
+  Inert
 ], errorHandler);
+
 
 // Add the routes
 
@@ -85,18 +87,31 @@ server.route([
 
       return reply({paths, plugins});
     }
-  }, {
+  },
+  // {
+  //   method: 'GET',
+  //   path: '/',
+  //   config: {
+  //     description: 'Hello World',
+  //     notes: 'Hello WOrld',
+  //     auth: false
+  //   },
+  //   handler: function (request, reply) {
+  //     return reply('Server is Up');
+  //   }
+  // },
+  {
     method: 'GET',
-    path: '/',
-    config: {
-      description: 'Hello World',
-      notes: 'Hello WOrld',
-      auth: false
-    },
-    handler: function (request, reply) {
-      return reply('Server is Up');
+    path: '/{param*}',
+    handler: {
+      directory: {
+        path: '.',
+        redirectToSlash: true,
+        index: true
+      }
     }
-  }]);
+  }
+]);
 
 // Start the server
 

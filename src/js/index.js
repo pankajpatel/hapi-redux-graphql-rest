@@ -1,10 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloProvider } from 'react-apollo'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux'
+
 import css from '../scss/base.scss';
 
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-
+import Store from './store'
 import routes from './routes/routes'
-//Or import css from '../less/base.less';
+import ApolloClientSingleton from './network/apollo-client-singleton'
 
-ReactDOM.render(<Router history={hashHistory}  routes={routes} />, document.getElementById('app'));
+const MOUNT_POINT = document.getElementById('app')
+
+const store = new Store(hashHistory, window.INITIAL_STATE)
+const history = syncHistoryWithStore(hashHistory, store.data)
+
+ReactDOM.render(
+  <ApolloProvider store={store.data} client={ApolloClientSingleton}>
+    <Router history={history} routes={routes} />
+  </ApolloProvider>,
+  MOUNT_POINT
+  );
