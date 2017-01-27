@@ -1,0 +1,54 @@
+@import "~normalize.css";
+@import "components/header.scss";
+@import "components/list-view.scss";
+@import "components/grid-view.scss";
+@import "components/forms.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+.clearfix{
+  clear: both;
+  &:before,
+  &:after{
+    content: ' ';
+    display: table;
+  }
+}
+
+.pull-right{
+  float: right;
+}
+.pull-left{
+  float: left;
+}
+
+.gutter-free{
+  margin-left: -15px;
+  margin-right: -15px;
+  @media (max-width: 650px){
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
+.gutter{
+  padding-left: 15px;
+  padding-right: 15px;
+  @media (max-width: 650px){
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.container{
+  width: 960px;
+  margin: 0 auto;
+  @media (max-width: 650px){
+    width: 100%;
+  }
+}
+
+.centered{
+  text-align: center;
+}

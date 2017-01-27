@@ -1,0 +1,20 @@
+
+.list{
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  img{
+    width: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0px;
+    margin: 10px 15px;
+  }
+  .list-item > p{
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
