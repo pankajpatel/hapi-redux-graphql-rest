@@ -16,7 +16,7 @@ class Home extends React.Component {
         <div>
           <button className="btn btn-primary toggle-view pull-right" type="button" onClick={this.props.onChangeView}>Toggle</button>
           <h2>List/Grid View</h2>
-          <List type={this.props.view} data={this.props.posts} />
+          <List type={this.props.view} data={this.props.data.posts || []} />
         </div>
       );
   }
@@ -24,6 +24,12 @@ class Home extends React.Component {
 
 const POSTS_QUERY = gql`
   query getUsersAndUser{
+    posts{
+      id
+      userId
+      title
+      body
+    }
     users {
       id
       name
@@ -47,21 +53,7 @@ const POSTS_QUERY = gql`
   }
 `;
 
-// // // // // // // // // // // // // // // // // // // // // // //
-
-
-
-const withClonedList = graphql(POSTS_QUERY, {
-  props: ({ownProps, query}) => ({
-    onLoad() {
-      return query().then(result => {
-        ownProps.onLoad(result);
-      })
-    }
-  })
-});
-const HomeWithData = withClonedList(Home);
-// // // // // // // // // // // // // // // // // // // // // // //
+const HomeWithData = graphql(POSTS_QUERY)(Home);
 
 const mapStateToProps = (state) => {
   return {
@@ -74,13 +66,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(toggleView())
     },
 
-    // onLoad: () => {
-    //   dispatch(load())
-    // }
+    onLoad: () => {
+      dispatch(load())
+    }
   }
 }
 export default connectState(
   mapStateToProps,
-  // mapQueriesToProps,
   mapDispatchToProps
 )(HomeWithData)
