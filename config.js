@@ -13,9 +13,15 @@ module.exports = {
   },
   client: {
     host: '127.0.0.1',
-    port: 8888
+    port: 8888,
+    routes: {
+      files: {
+        relativeTo: path.join(__dirname, outputDir)
+      }
+    }
   },
   ui: {
+    title: 'Hapijs Redux Rest GraphQL',
     srcDir: 'src',
     entry: 'js/index.js',
     outputDir: outputDir,
