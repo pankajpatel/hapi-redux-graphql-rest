@@ -6,7 +6,7 @@ const { graphqlHapi, graphiqlHapi } = require('graphql-server-hapi');
 const { makeExecutableSchema } = require('graphql-tools')
 require('dotenv').load();
 
-const config = require('./config');
+const config = require('../config');
 
 const Schema = require('./schema/hp-schema');
 const Resolvers = require('./resolvers/hp-resolvers');
@@ -61,11 +61,6 @@ server.route([
   { // path:/all
     method: 'GET',
     path: '/all',
-    config: {
-      description: 'All Paths',
-      notes: 'This will list all the route registered on server',
-      tags: ['api', 'debug']
-    },
     handler: function (request, reply) {
       var table = server.table();
       let paths = [];
@@ -88,18 +83,6 @@ server.route([
       return reply({paths, plugins});
     }
   },
-  // {
-  //   method: 'GET',
-  //   path: '/',
-  //   config: {
-  //     description: 'Hello World',
-  //     notes: 'Hello WOrld',
-  //     auth: false
-  //   },
-  //   handler: function (request, reply) {
-  //     return reply('Server is Up');
-  //   }
-  // },
   {
     method: 'GET',
     path: '/{param*}',
