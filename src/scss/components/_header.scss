@@ -13,16 +13,18 @@ header,
     margin: 0;
     padding: 20px 0;
   }
-  ul{
+  .app-menu{
     list-style: none;
     margin: 0;
     padding: 20px 15px;
     position: absolute;
     right: 0;
     bottom: 0;
-    li{
+    &>li{
       display: inline-block;
-      a{
+      vertical-align: middle;
+
+      &>a{
         color: $white;
         padding: 5px 8px;
         text-decoration: none;
