@@ -31,7 +31,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      js: path.join(__dirname, config.ui.srcDir , 'js')
+      js: path.join(__dirname, config.ui.srcDir , 'js'),
+      root: __dirname
     }
   },
   module:{

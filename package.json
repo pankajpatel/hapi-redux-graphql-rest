@@ -2,7 +2,7 @@
   "name": "hp-graphql",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "private": true,
   "scripts": {
     "start": "node server/index.js",
@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "apollo-client": "^0.8.1",
-    "bootstrap": "^4.0.0-alpha.6",
     "dotenv": "^4.0.0",
     "graphql": "^0.9.1",
     "graphql-server-hapi": "^0.5.2",
@@ -31,8 +30,7 @@
     "react-router-redux": "^4.0.7",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0",
-    "wreck": "^10.0.0"
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

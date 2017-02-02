@@ -1,4 +1,3 @@
-// const Wreck = require('wreck');
 const fetch = require('node-fetch');
 
 const authors = [
@@ -64,7 +63,7 @@ const resolveFunctions = {
     },
   },
   Post: {
-    
+
   },
 };
 

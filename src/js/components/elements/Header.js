@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-
+import config from 'root/config'
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +10,7 @@ export default class Header extends React.Component {
     return (
         <header className="header">
           <div className="container gutter app-name">
-            <h1>HolidayPirates GraphQL Test</h1>
+            <h1>{config.ui.title}</h1>
             <ul className="app-menu">
               <li><Link to="/home" activeClassName='active' >Home</Link></li>
               <li><Link to="/login" activeClassName='active' >Login</Link></li>
