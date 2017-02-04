@@ -22,7 +22,6 @@ function fetchPostByUser(userId) {
   return fetchResponseByURL(`/posts?userId=${userId}`).then(json => json);
 }
 
-
 function fetchPersonByURL(relativeURL) {
   return fetchResponseByURL(relativeURL).then(json => json);
 }
@@ -35,25 +34,13 @@ const resolveFunctions = {
     post(root, { id }) {
       return fetchPost(id);
     },
-    author(root, { id }) {
-      return authors.find(author => author.id == id );
-    },
     users() {
       return fetchUsers();
     },
     user(root, { id }) {
       return fetchUser(id);
     },
-  },
-
-  Author: {
-    posts(author) {
-      return posts.filter(post => post.authorId == author.id);
-    },
-  },
-  Post: {
-
-  },
+  }
 };
 
 module.exports = resolveFunctions;
